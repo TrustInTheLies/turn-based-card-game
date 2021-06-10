@@ -1,0 +1,38 @@
+.main {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.characters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.character {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.character__hp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 30px;
+  background-color: #8ffa6a;
+}
+
+.character__hp-enemy {
+  background-color: #ff6060;
+}
+
+.character__hp-value {
+  margin: 0;
+}
+
+.character__image {
+  padding-top: 30px;
+}
