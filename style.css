@@ -1,5 +1,5 @@
 .main {
-  width: 50%;
+  width: 70%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -23,6 +23,8 @@
   width: 80%;
   height: 30px;
   background-color: #8ffa6a;
+  border: 2px solid #000;
+  border-radius: 25px;
 }
 
 .character__hp-enemy {
@@ -35,4 +37,53 @@
 
 .character__image {
   padding-top: 30px;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cards__hand {
+  display: flex;
+  justify-content: space-between;
+  max-width: 80%;
+}
+
+.mp {
+  display: flex;
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.mp__image {
+  height: 50px;
+  width: auto;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  max-width: 20%;
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+}
+
+.card__header {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card__image {
+  width: 80px;
+  height: auto;
+  align-self: center;
 }
