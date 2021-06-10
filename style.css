@@ -42,12 +42,17 @@
 .cards {
   display: flex;
   justify-content: space-between;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
 }
 
 .cards__hand {
   display: flex;
-  justify-content: space-between;
   max-width: 80%;
 }
 
@@ -63,6 +68,25 @@
   width: auto;
 }
 
+.end-turn {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.end-turn__button {
+  width: 100%;
+  border: 2px solid #000;
+  border-radius: 10px;
+  text-align: center;
+  height: 50px;
+  font-size: 16px;
+}
+
+.end-turn__button:active {
+  background-color: #b4b4b4;
+}
+
 .card {
   display: flex;
   flex-direction: column;
@@ -72,6 +96,11 @@
   padding-left: 10px;
   padding-right: 10px;
   text-align: center;
+  margin-right: 20px;
+}
+
+.card:active {
+  background-color: #f2f2f2;
 }
 
 .card__header {
