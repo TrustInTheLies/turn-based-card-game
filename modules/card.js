@@ -5,7 +5,7 @@ export default class Card {
     this.value = value;
     this.effects = effects;
   }
-  create(cost, name, image, description) {}
+
   cast(player, target) {
     if (this.damage) {
       console.log(target.hp - this.value);
@@ -26,3 +26,5 @@ export default class Card {
     }
   }
 }
+
+// you need to rewrite it, so it would pick info from click
