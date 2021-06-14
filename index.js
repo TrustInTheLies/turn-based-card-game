@@ -14,6 +14,8 @@ let cast = new Card(
   cards[0].effects
 );
 
+let hand = new Hand();
+
 let hero = new Character(
   50,
   0,
@@ -36,14 +38,11 @@ let enemy = new Character(
 );
 console.log(enemy);
 
-card.addEventListener("click", (event) => {
-  if (event.target == card) {
+playerHand.addEventListener("click", (event) => {
+  if (event.target.closest(".card")) {
     console.log(event.target);
+    cast.cast(hero, enemy);
   }
-
-  cast.cast(hero, enemy);
 });
-
-let hand = new Hand();
 
 hand.getHand(hero, cardsHand, playerHand);

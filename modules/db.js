@@ -55,12 +55,13 @@ export const createCards = (cards) => {
     template.insertAdjacentHTML(
       "beforeend",
       `
-    <div class="card__header">
-      <p class="card__mp">${card.cost}</p>
-      <p class="card__name">${card.name}</p>
-    </div>
-    <img class="card__image" src="./images/${card.image}.png" alt="sword" />
-    <p class="card__description">${card.description}</p>`
+        <div class="card__header">
+          <p class="card__mp">${card.cost}</p>
+          <p class="card__name">${card.name}</p>
+        </div>
+        <img class="card__image" src="./images/${card.image}.png" alt="sword" />
+        <p class="card__description">${card.description}</p>
+      `
     );
     cardsLibrary.push(template);
   });
