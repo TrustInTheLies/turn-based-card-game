@@ -19,10 +19,13 @@ export default class Card {
     let castCard = this.pickCard(target, cards);
     console.log(castCard);
     if (castCard[0].damage) {
-      console.log(enemy.hp - castCard[0].value);
+      document.querySelector(".enemy__hp-value-current").textContent =
+        enemy.hp - castCard[0].value;
+      enemy.hp -= castCard[0].value;
     }
     if (castCard[0].defence) {
       console.log(player.armor + castCard[0].value);
+      player.armor += castCard[0].value;
     }
     if (castCard[0].effects) {
       if (castCard[0].effects.target === "self") {
@@ -35,6 +38,8 @@ export default class Card {
         );
       }
     }
+    let mp = document.querySelector(".mp__value-current");
+    mp.textContent -= castCard[0].cost;
     target.remove();
   }
 }
