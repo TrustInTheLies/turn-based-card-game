@@ -1,29 +1,41 @@
 export default class Card {
-  constructor(damage, defence, value, effects) {
-    this.damage = damage;
-    this.defence = defence;
-    this.value = value;
-    this.effects = effects;
+  getName(card) {
+    let name = card.children[0].children[1].textContent;
+    return name;
   }
 
-  cast(player, target) {
-    if (this.damage) {
-      console.log(target.hp - this.value);
+  pickCard(target, cards) {
+    if (target) {
+      let targetCard = cards.filter((card) => {
+        if (card.name === this.getName(target)) {
+          return card;
+        }
+      });
+      return targetCard;
     }
-    if (this.defence) {
-      console.log(player.armor + this.value);
+  }
+
+  cast(enemy, player, target, cards) {
+    let castCard = this.pickCard(target, cards);
+    console.log(castCard);
+    if (castCard[0].damage) {
+      console.log(enemy.hp - castCard[0].value);
     }
-    if (this.effects) {
-      if (this.effects.target === "self") {
+    if (castCard[0].defence) {
+      console.log(player.armor + castCard[0].value);
+    }
+    if (castCard[0].effects) {
+      if (castCard[0].effects.target === "self") {
         console.log(
-          `Player received ${this.effects.effect} for ${this.effects.duration} turn`
+          `Player received ${castCard[0].effects.effect} for ${castCard[0].effects.duration} turn`
         );
       } else {
         console.log(
-          `Enemy received ${this.effects.effect} for ${this.effects.duration} turn`
+          `Enemy received ${castCard[0].effects.effect} for ${castCard[0].effects.duration} turn`
         );
       }
     }
+    target.remove();
   }
 }
 

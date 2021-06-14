@@ -3,16 +3,10 @@ import Character from "./modules/char.js";
 import Card from "./modules/card.js";
 import Hand from "./modules/hand.js";
 
-const card = document.querySelector(".card");
 const playerHand = document.querySelector(".cards__hand");
 let cardsHand = createCards(cards);
 
-let cast = new Card(
-  cards[0].damage,
-  cards[0].defence,
-  cards[0].value,
-  cards[0].effects
-);
+let cast = new Card();
 
 let hand = new Hand();
 
@@ -40,8 +34,7 @@ console.log(enemy);
 
 playerHand.addEventListener("click", (event) => {
   if (event.target.closest(".card")) {
-    console.log(event.target);
-    cast.cast(hero, enemy);
+    cast.cast(enemy, hero, event.target.closest(".card"), cards);
   }
 });
 
