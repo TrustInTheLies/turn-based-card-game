@@ -1,17 +1,15 @@
 export default class Card {
   getName(card) {
-    let name = card.children[0].children[1].textContent;
-    return name;
+    return card.children[0].children[1].textContent;
   }
 
   pickCard(target, cards) {
     if (target) {
-      let targetCard = cards.filter((card) => {
+      return cards.filter((card) => {
         if (card.name === this.getName(target)) {
           return card;
         }
       });
-      return targetCard;
     }
   }
 
@@ -23,8 +21,12 @@ export default class Card {
       console.log("Not enough MP");
     } else {
       if (castCard[0].damage) {
+        /* todo: if castCard.name === "debuff" => add effect and duration, check AI to continue
+            maybe it's better to check through effect type, then strength, then duration
+            instead of name
+        */
         document.querySelector(".enemy__hp-value-current").textContent =
-            enemy.hp - castCard[0].value;
+          enemy.hp - castCard[0].value;
         enemy.hp -= castCard[0].value;
       }
       if (castCard[0].defence) {
@@ -33,12 +35,16 @@ export default class Card {
       }
       if (castCard[0].effects) {
         if (castCard[0].effects.target === "self") {
+          player.effects.push(castCard[0].effects);
+          console.log(player.effects);
           console.log(
-              `Player received ${castCard[0].effects.effect} for ${castCard[0].effects.duration} turn`
+            `Player received ${castCard[0].effects.effect} for ${castCard[0].effects.duration} turn`
           );
         } else {
+          enemy.effects.push(castCard[0].effects);
+          console.log(enemy);
           console.log(
-              `Enemy received ${castCard[0].effects.effect} for ${castCard[0].effects.duration} turn`
+            `Enemy received ${castCard[0].effects.effect} for ${castCard[0].effects.duration} turn`
           );
         }
       }
@@ -47,7 +53,6 @@ export default class Card {
 
       target.remove();
     }
-
   }
 }
 
