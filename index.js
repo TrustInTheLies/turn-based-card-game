@@ -7,6 +7,7 @@ import AI from "./modules/AI.js";
 const playerHand = document.querySelector(".cards__hand");
 const endTurn = document.querySelector(".end-turn__button");
 const currentMp = document.querySelector(".mp__value-current");
+const endscreen = document.querySelector(".endscreen");
 
 let ai = new AI();
 
@@ -36,17 +37,33 @@ let enemy = new Character(
   []
 );
 
-playerHand.addEventListener("click", (event) => {
+// todo: check this out, and remember, REMEMBER, how to pass such function to event listener
+
+const useCard = () => {
   if (event.target.closest(".card")) {
     cast.cast(enemy, hero, event.target.closest(".card"), cards);
+    if (hero.hp <= 0) {
+      endscreen.textContent = "You Lose";
+      playerHand.removeEventListener("click", useCard);
+      endTurn.removeEventListener("click", buttonHandler);
+    }
+    if (enemy.hp <= 0) {
+      endscreen.textContent = "You Win";
+      playerHand.removeEventListener("click", useCard);
+      endTurn.removeEventListener("click", buttonHandler);
+    }
   }
-});
+};
 
-hand.getHand(hero, cardsHand, playerHand);
-
-endTurn.addEventListener("click", () => {
+const buttonHandler = () => {
   ai.cast(hero, enemy);
   playerHand.innerHTML = "";
   hand.getHand(hero, cardsHand, playerHand);
   currentMp.textContent = hero.mp;
-});
+};
+
+playerHand.addEventListener("click", useCard);
+
+hand.getHand(hero, cardsHand, playerHand);
+
+endTurn.addEventListener("click", buttonHandler);
