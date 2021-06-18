@@ -37,12 +37,6 @@ let enemy = new Character(
   []
 );
 
-/* todo: check this out, and remember, REMEMBER,
-    how to pass such function to event listener,
-    basically you need to drop an argument with BOTH
-    declaring and calling the function in a listener
- */
-
 const useCard = () => {
   if (event.target.closest(".card")) {
     cast.cast(enemy, hero, event.target.closest(".card"), cards);
