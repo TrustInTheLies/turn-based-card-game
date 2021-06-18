@@ -23,8 +23,9 @@ export default class AI {
         if (target.armor !== 0) {
           target.armor -= chosenCard.value;
         } else {
-          document.querySelector(".character__hp-value-current").textContent -=
-            chosenCard.value;
+          document.querySelector(".character__hp-value-current").textContent =
+            target.hp - chosenCard.value;
+          target.hp -= chosenCard.value;
         }
         console.log(`Player received ${chosenCard.value} damage`);
       } else {

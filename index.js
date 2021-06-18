@@ -42,11 +42,6 @@ let enemy = new Character(
 const useCard = () => {
   if (event.target.closest(".card")) {
     cast.cast(enemy, hero, event.target.closest(".card"), cards);
-    if (hero.hp <= 0) {
-      endscreen.textContent = "You Lose";
-      playerHand.removeEventListener("click", useCard);
-      endTurn.removeEventListener("click", buttonHandler);
-    }
     if (enemy.hp <= 0) {
       endscreen.textContent = "You Win";
       playerHand.removeEventListener("click", useCard);
@@ -57,9 +52,15 @@ const useCard = () => {
 
 const buttonHandler = () => {
   ai.cast(hero, enemy);
+  console.log(hero.hp);
   playerHand.innerHTML = "";
   hand.getHand(hero, cardsHand, playerHand);
   currentMp.textContent = hero.mp;
+  if (hero.hp <= 0) {
+    endscreen.textContent = "You Lose";
+    playerHand.removeEventListener("click", useCard);
+    endTurn.removeEventListener("click", buttonHandler);
+  }
 };
 
 playerHand.addEventListener("click", useCard);
