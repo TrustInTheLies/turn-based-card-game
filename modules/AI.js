@@ -28,7 +28,8 @@ export default class AI {
             let effectData = char.effects.filter(
               (effect) => effect.effect == effectType
             );
-            // todo: think about adding armor to calculation
+            /* todo: think about adding armor to calculation and setting duration counter
+             *   and don't  forget about Math.abs() (?) for calculating with armor */
             /* target.hp =
               target.hp +
               target.armor -
