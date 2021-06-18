@@ -5,6 +5,8 @@ import Hand from "./modules/hand.js";
 import AI from "./modules/AI.js";
 
 const playerHand = document.querySelector(".cards__hand");
+const endTurn = document.querySelector(".end-turn__button");
+const currentMp = document.querySelector(".mp__value-current");
 
 let ai = new AI();
 
@@ -42,4 +44,9 @@ playerHand.addEventListener("click", (event) => {
 
 hand.getHand(hero, cardsHand, playerHand);
 
-ai.cast(hero, enemy);
+endTurn.addEventListener("click", () => {
+  ai.cast(hero, enemy);
+  playerHand.innerHTML = "";
+  hand.getHand(hero, cardsHand, playerHand);
+  currentMp.textContent = hero.mp;
+});
